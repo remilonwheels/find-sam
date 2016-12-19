@@ -1,0 +1,28 @@
+* {
+  border: 2px solid orange;
+}
+
+section {
+  width: 805px;
+}
+
+div {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  float: left;
+}
+
+
+.background-img {
+  position: relative;
+}
+
+.character-img {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  display: none;
+}
