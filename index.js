@@ -8,6 +8,7 @@ function SignIn(event) {
   var userName = event.target.UserName.value;
   console.log(userName);
   new Score(userName);
+  localStorage.setItem('Score', JSON.stringify(scoreArray));
 }
 
 function Score (userName) {
