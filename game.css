@@ -1,0 +1,18 @@
+* {
+  border: 2px solid orange;
+}
+
+section {
+  width: 805px;
+}
+
+div {
+  width: 400px;
+  height: 400px;
+  float: left;
+}
+
+img {
+  display: inline-block;
+  margin: 0 auto;
+}
