@@ -1,9 +1,17 @@
 'use strict';
 
-var charImgTopRight = document.getElementById('char-img-top-left');
+var charImgTopLeft = document.getElementById('char-img-top-left');
+var charImgTopRight = document.getElementById('char-img-top-right');
+var charImgBtmLeft = document.getElementById('char-img-btm-left');
+var charImgBtmRight = document.getElementById('char-img-btm-right');
 
-charImgTopRight.style.display = 'inline-block';
+function renderPosition(position) {
+  position.style.display = 'inline-block';
+  window.setTimeout(function(){
+    position.style.display = 'none';
+  }, 1000);
+}
 
-window.setTimeout(function(){
-  charImgTopRight.style.display = 'none';
-}, 1000);
+renderPosition(charImgTopRight);
+renderPosition(charImgBtmRight);
+renderPosition(charImgTopLeft);
