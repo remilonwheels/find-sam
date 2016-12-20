@@ -5,11 +5,20 @@ var charImgTopRight = document.getElementById('char-img-top-right');
 var charImgBtmLeft = document.getElementById('char-img-btm-left');
 var charImgBtmRight = document.getElementById('char-img-btm-right');
 var gameboard = document.getElementById('gameboard');
+var roundHeader = document.getElementById('round-header');
+var clicksInRound = document.getElementById('clicks-in-round');
+var nextRoundButton = document.getElementById('next-round-button');
+
 var clickCount = 0;
 var round = 1;
 var positionArray = [];
 
 function playRound(){
+  roundHeader.textContent = 'Round ' + round;
+  clicksInRound.textContent = 'Click Count: ' + clickCount + ' / ' + round;
+
+
+
   var randomPosition = getRandomPosition();
   if (randomPosition === 0){
     positionArray.push(charImgTopLeft);
@@ -25,6 +34,7 @@ function playRound(){
   }
   renderPositionArray(positionArray, 250, 150);
   gameboard.addEventListener('click', handleUserClick);
+  nextRoundButton.addEventListener('click', playRound);
 }
 
 function getRandomPosition() {
@@ -73,7 +83,10 @@ function handleUserClick(event) {
     userSelection = 'char-img-btm-right';
   }
 
+
   if (userSelection === positionArray[clickCount].id) {
+    clickCount += 1;
+    clicksInRound.textContent = 'Click Count: ' + clickCount + ' / ' + round;
 
   } else {
     console.log('user lose');
@@ -81,15 +94,15 @@ function handleUserClick(event) {
     clickCount = 0;
   }
 
-  if (clickCount === positionArray.length - 1) {
+  if (clickCount === positionArray.length) {
     round += 1;
     console.log('round: ' + round);
     clickCount = 0;
     console.log('user win');
-    playRound();
+    // playRound();
     //write userWin() function
     // return userWin();
   }
-  clickCount += 1;
+
   console.log(clickCount);
 }
