@@ -25,3 +25,16 @@ for (var i = 0; i < positionArray.length; i++){
   // }, test * (i+1));
   renderPosition(positionArray[i], showHideTime * (i + 1), showHideTime * i);
 }
+
+
+var gameboard = document.getElementById('gameboard');
+
+function handleUserClick(event) {
+  event.preventDefault();
+
+  var userSelection = event.target.id;
+
+  console.log(userSelection);
+}
+
+gameboard.addEventListener('click', handleUserClick);
