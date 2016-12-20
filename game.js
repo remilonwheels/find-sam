@@ -14,6 +14,7 @@ var round = 1;
 var positionArray = [];
 
 function playRound(){
+  nextRoundButton.style.display = 'none';
   roundHeader.textContent = 'Round ' + round;
   clicksInRound.textContent = 'Click Count: ' + clickCount + ' / ' + round;
 
@@ -93,10 +94,8 @@ function handleUserClick(event) {
     console.log('round: ' + round);
     clickCount = 0;
     console.log('user win');
+    nextRoundButton.style.display = 'block';
     gameboard.removeEventListener('click', handleUserClick);
-    // playRound();
-    //write userWin() function
-    // return userWin();
   }
 
   console.log(clickCount);

@@ -30,3 +30,8 @@ div {
 aside {
   text-align: center;
 }
+
+#next-round-button {
+  display: none;
+  margin: 0 auto;
+}
