@@ -17,8 +17,6 @@ function playRound(){
   roundHeader.textContent = 'Round ' + round;
   clicksInRound.textContent = 'Click Count: ' + clickCount + ' / ' + round;
 
-
-
   var randomPosition = getRandomPosition();
   if (randomPosition === 0){
     positionArray.push(charImgTopLeft);
@@ -43,8 +41,6 @@ function getRandomPosition() {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-
 function renderPosition(position, timeToShow, timeToHide) {
   window.setTimeout(function(){
     position.style.display = 'inline-block';
@@ -59,11 +55,6 @@ function renderPositionArray(array, showTime, hideTime){
     renderPosition(array[i], (showTime * (i + 1)) + (hideTime * i), (showTime + hideTime) * i);
   }
 }
-
-playRound();
-
-
-
 
 function handleUserClick(event) {
   event.preventDefault();
@@ -91,7 +82,10 @@ function handleUserClick(event) {
   } else {
     console.log('user lose');
     //write userLose() function
-    clickCount = 0;
+    nextRoundButton.removeEventListener('click', playRound);
+    gameboard.removeEventListener('click', handleUserClick);
+    return clickCount = 0;
+
   }
 
   if (clickCount === positionArray.length) {
@@ -99,6 +93,7 @@ function handleUserClick(event) {
     console.log('round: ' + round);
     clickCount = 0;
     console.log('user win');
+    gameboard.removeEventListener('click', handleUserClick);
     // playRound();
     //write userWin() function
     // return userWin();
@@ -106,3 +101,6 @@ function handleUserClick(event) {
 
   console.log(clickCount);
 }
+
+//Function Calls
+playRound();
