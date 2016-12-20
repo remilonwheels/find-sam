@@ -5,7 +5,7 @@ var charImgTopRight = document.getElementById('char-img-top-right');
 var charImgBtmLeft = document.getElementById('char-img-btm-left');
 var charImgBtmRight = document.getElementById('char-img-btm-right');
 
-var positionArray = [charImgTopLeft, charImgTopRight, charImgBtmLeft, charImgTopLeft, charImgBtmRight, charImgBtmRight];
+var positionArray = [charImgTopLeft, charImgTopRight, charImgBtmLeft];
 
 function renderPosition(position, timeToShow, timeToHide) {
   window.setTimeout(function(){
@@ -22,11 +22,12 @@ function renderPositionArray(array, showTime, hideTime){
   }
 }
 
-renderPositionArray(positionArray, 500, 250);
+renderPositionArray(positionArray, 250, 150);
 
 
 var gameboard = document.getElementById('gameboard');
 var clickCount = 0;
+var round = 1;
 
 function handleUserClick(event) {
   event.preventDefault();
@@ -55,9 +56,12 @@ function handleUserClick(event) {
   }
 
   if (clickCount === positionArray.length - 1) {
+    round += 1;
+    console.log('round: ' + round);
+    clickCount = 0;
     return console.log('user win');
     //write userWin() function
-    return userWin();
+    // return userWin();
   }
   clickCount += 1;
   console.log(clickCount);
