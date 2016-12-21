@@ -31,7 +31,7 @@ aside {
   text-align: center;
 }
 
-#next-round-button {
+#next-round-button, #play-again-button {
   display: none;
   margin: 0 auto;
 }
