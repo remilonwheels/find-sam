@@ -1,6 +1,4 @@
 * {
-  font-family: 'Open Sans Condensed', sans-serif;
-  background-color: grey;
   align-content: center;
 }
 
@@ -12,6 +10,23 @@ img {
 section {
   margin: 0 auto;
   clear: both;
+}
+
+#title {
+  font-size: 29px;
+}
+
+#cayla {
+  margin-top: 20px;
+}
+section h1 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+section:nth-child(even)>h1 {
+  text-align: right;
 }
 
 #cayla-pic, #adrian-pic{
@@ -36,4 +51,9 @@ section {
 #adrian-pic {
   height: 160px;
   width: 160px;
+}
+#remi-pic {
+  height: 160px;
+  width: 160px;
+
 }
