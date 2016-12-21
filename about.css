@@ -4,14 +4,6 @@
   align-content: center;
 }
 
-body {
-  width: 960px;
-
-}
-main {
-  width: 960px;
-  margin: 0 auto;
-}
 
 img {
   float: left;
