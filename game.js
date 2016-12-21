@@ -18,7 +18,7 @@ var round = 1;
 var positionArray = [];
 
 function storeLocalStorage() {
-
+  localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
 }
 
 function retrieveLocalStorage(jsonArgument) {
@@ -117,7 +117,7 @@ function loseGame() {
 
   //user last score object score
   scoreArray[scoreArray.length - 1].score = userScore;
-  console.log(scoreArray);
+  localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
 
 }
 
