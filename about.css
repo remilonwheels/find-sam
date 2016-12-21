@@ -1,7 +1,47 @@
 * {
   font-family: 'Open Sans Condensed', sans-serif;
+  background-color: grey;
+  align-content: center;
 }
 
-#cayla {
-  
+body {
+  width: 960px;
+
+}
+main {
+  width: 960px;
+  margin: 0 auto;
+}
+
+img {
+  float: left;
+}
+
+section {
+  margin: 0 auto;
+  clear: both;
+}
+
+#cayla-pic, #adrian-pic{
+  float: right;
+  margin-left: 20px;
+}
+
+#remi-pic, #khalid-pic{
+  margin-right: 20px;
+}
+
+#cayla-pic{
+  height: 160px;
+  width: 160px;
+}
+
+#khalid-pic {
+  height: 160px;
+  width: 160px;
+}
+
+#adrian-pic {
+  height: 160px;
+  width: 160px;
 }
