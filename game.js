@@ -9,10 +9,21 @@ var roundHeader = document.getElementById('round-header');
 var clicksInRound = document.getElementById('clicks-in-round');
 var nextRoundButton = document.getElementById('next-round-button');
 var playAgainButton = document.getElementById('play-again-button');
+var userScore;
+
+var scoreArray = retrieveLocalStorage(localStorage.scoreArray);
 
 var clickCount = 0;
 var round = 1;
 var positionArray = [];
+
+function storeLocalStorage() {
+
+}
+
+function retrieveLocalStorage(jsonArgument) {
+  return JSON.parse(jsonArgument);
+}
 
 function playRound(){
   nextRoundButton.style.display = 'none';
@@ -102,6 +113,12 @@ function loseGame() {
   gameboard.removeEventListener('click', handleUserClick);
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
+  userScore = round - 1;
+
+  //user last score object score
+  scoreArray[scoreArray.length - 1].score = userScore;
+  console.log(scoreArray);
+
 }
 
 function playGame(){
