@@ -32,7 +32,7 @@ function playRound(){
   if (randomPosition === 3){
     positionArray.push(charImgBtmRight);
   }
-  renderPositionArray(positionArray, 250, 150);
+  renderPositionArray(positionArray, 300, 150);
   gameboard.addEventListener('click', handleUserClick);
   nextRoundButton.addEventListener('click', playRound);
 }
