@@ -8,6 +8,7 @@ var gameboard = document.getElementById('gameboard');
 var roundHeader = document.getElementById('round-header');
 var clicksInRound = document.getElementById('clicks-in-round');
 var nextRoundButton = document.getElementById('next-round-button');
+var playAgainButton = document.getElementById('play-again-button');
 
 var clickCount = 0;
 var round = 1;
@@ -81,12 +82,7 @@ function handleUserClick(event) {
     clicksInRound.textContent = 'Click Count: ' + clickCount + ' / ' + round;
 
   } else {
-    console.log('user lose');
-    //write userLose() function
-    nextRoundButton.removeEventListener('click', playRound);
-    gameboard.removeEventListener('click', handleUserClick);
-    return clickCount = 0;
-
+    loseGame();
   }
 
   if (clickCount === positionArray.length) {
@@ -101,5 +97,23 @@ function handleUserClick(event) {
   console.log(clickCount);
 }
 
+function loseGame() {
+  nextRoundButton.removeEventListener('click', playRound);
+  gameboard.removeEventListener('click', handleUserClick);
+  playAgainButton.style.display = 'block';
+  playAgainButton.addEventListener('click', playGame);
+}
+
+function playGame(){
+  clickCount = 0;
+  round = 1;
+  positionArray = [];
+
+  nextRoundButton.style.display = 'block';
+  nextRoundButton.addEventListener('click', playRound);
+}
+
 //Function Calls
-playRound();
+playAgainButton.addEventListener('click', playGame);
+nextRoundButton.addEventListener('click', playRound);
+playGame();
