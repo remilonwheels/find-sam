@@ -111,6 +111,8 @@ function playGame(){
 
   nextRoundButton.style.display = 'block';
   nextRoundButton.addEventListener('click', playRound);
+
+  playAgainButton.style.display = 'none';
 }
 
 //Function Calls
