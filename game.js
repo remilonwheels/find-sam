@@ -147,10 +147,10 @@ function updateUserScore() {
     scoreArray[scoreArray.length - 1].score = userScore;
     localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
     firstGameFlag = false;
+  } else {
+    new Score(scoreArray[scoreArray.length - 1].userName, userScore);
+    localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
   }
-
-  new Score(scoreArray[scoreArray.length - 1].userName, userScore);
-  localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
 }
 
 function playGame(){
