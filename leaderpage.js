@@ -1,7 +1,6 @@
 'use strict';
 var scoreArray = [];
 var leaderList = document.getElementById('leaderList');
-var boardKiller = document.getElementById('button');
 var redirect = function() { window.location.href = 'leaderpage.html'
 };
 // function Score (userName, score) {
@@ -28,8 +27,10 @@ if (localStorage.scoreArray) {
 }
 
 
+
+
 scoreArray.sort(function(a, b) {
-  return parseFloat(b.score) - parseFloat(a.score);
+  return parseInt(b.score) - parseInt(a.score);
 });
 var playerName = [];
 var playerScore = [];
@@ -39,15 +40,17 @@ function makeList() {
   for (var i = 0; i < scoreArray.length; i++) {
     playerName[i] = scoreArray[i].userName;
     playerScore[i] = scoreArray[i].score;
-    mats.push('<li>' + playerName[i] + ':  '+ playerScore[i] +'</li>');
+    mats.push(playerName[i] + ': ' + playerScore[i]);
 
   }
 
 }
 function renderList() {
-  for(var i = 0; i < scoreArray.length; i++) {
+  for(var i = 0; i < mats.length; i++) {
+    var newItem = document.createElement('li');
     console.log(playerName[i] + playerScore[i]);
-    leaderList.innerHTML = mats;
+    newItem.textContent = mats[i];
+    leaderList.appendChild(newItem);
 
   }
 
