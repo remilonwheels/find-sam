@@ -101,7 +101,21 @@ function handleUserClick(event) {
     clickCount += 1;
     clicksInRound.textContent = round - clickCount;
 
+    event.target.parentNode.childNodes[3].style.zIndex = 5;
+
+    window.setTimeout(function() {
+      event.target.parentNode.childNodes[3].style.zIndex = -1;
+    }, 300);
+    console.log(event.target.parentNode.childNodes);
+
+
   } else {
+    event.target.parentNode.childNodes[5].style.zIndex = 5;
+
+    window.setTimeout(function() {
+      event.target.parentNode.childNodes[5].style.zIndex = -1;
+    }, 300);
+    console.log(event.target.parentNode.childNodes);
     loseGame();
   }
 
@@ -115,7 +129,7 @@ function handleUserClick(event) {
     console.log('user win');
 
     if (!winGameFlag) {
-      playRound();
+      window.setTimeout(playRound, 500);
     }
   }
 
