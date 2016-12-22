@@ -56,6 +56,8 @@ aside div {
 
 #play-again-button {
   margin: 0 auto;
+  position: relative;
+  top: 50%;
 }
 
 #play-new-user-button {
