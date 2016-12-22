@@ -48,7 +48,11 @@ aside div {
 }
 
 #play-again-button {
-  /*display: none;*/
+  margin: 0 auto;
+}
+
+#play-new-user-button {
+  display: none;
   margin: 0 auto;
 }
 
