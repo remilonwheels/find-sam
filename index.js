@@ -32,9 +32,10 @@ function Score (userName) {
 
 if (localStorage.scoreArray) {
   scoreArray = JSON.parse(localStorage.scoreArray);
-} else {
-  new Score(userName);
 }
+// else {
+//   new Score(userName);
+// }
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 var slideIndex = 1;
