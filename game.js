@@ -123,6 +123,7 @@ function handleUserClick(event) {
 
 function loseGame() {
   gameboard.removeEventListener('click', handleUserClick);
+  playAgainButton.textContent = 'Play Again';
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
 
@@ -132,6 +133,7 @@ function loseGame() {
 
 function winGame() {
   gameboard.removeEventListener('click', handleUserClick);
+  playAgainButton.textContent = 'Play Again';
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
 
@@ -154,6 +156,7 @@ function updateUserScore() {
 }
 
 function playGame(){
+  winGameFlag = false;
   clickCount = 0;
   round = 1;
   positionArray = [];
