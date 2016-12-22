@@ -10,11 +10,12 @@ var clicksInRound = document.getElementById('clicks-in-round');
 var winLoseHeader = document.getElementById('win-lose-header');
 
 var playAgainButton = document.getElementById('play-again-button');
+var playNewUserButton = document.getElementById('play-new-user-button');
 var userScore;
 var winGameFlag = false;
 var firstGameFlag = true;
+var scoreArray = [];
 
-var scoreArray = retrieveLocalStorage(localStorage.scoreArray);
 
 var clickCount = 0;
 var round = 1;
@@ -31,9 +32,6 @@ function storeLocalStorage() {
   localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
 }
 
-function retrieveLocalStorage(jsonArgument) {
-  return JSON.parse(jsonArgument);
-}
 
 function playRound(){
   roundHeader.textContent = round;
@@ -53,7 +51,11 @@ function playRound(){
     positionArray.push(charImgBtmRight);
   }
   renderPositionArray(positionArray, 300, 150);
-  gameboard.addEventListener('click', handleUserClick);
+
+  //delay bind until render is complete
+  window.setTimeout(function() {
+    gameboard.addEventListener('click', handleUserClick);
+  }, positionArray.length * (300 + 150));
 }
 
 function getRandomPosition() {
@@ -117,6 +119,7 @@ function handleUserClick(event) {
   }
 
   if (clickCount === positionArray.length) {
+    gameboard.removeEventListener('click', handleUserClick);
     if (round === roundsToWin) {
       winGame();
     }
@@ -139,8 +142,13 @@ function loseGame() {
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
 
+  playNewUserButton.style.display = 'block';
+  playNewUserButton.addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
+
   //lose functionality
-  winLoseHeader.textContent = 'You Lose'
+  winLoseHeader.textContent = 'You Lose';
 
   userScore = round - 1;
   updateUserScore();
@@ -151,6 +159,10 @@ function winGame() {
   playAgainButton.textContent = 'Play Again';
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
+  playNewUserButton.style.display = 'block';
+  playNewUserButton.addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
   winGameFlag = true;
   userScore = round;
   updateUserScore();
@@ -179,9 +191,14 @@ function playGame(){
   positionArray = [];
 
   playRound();
-
   playAgainButton.style.display = 'none';
 }
 
 //Function Calls
+if (localStorage.scoreArray) {
+  scoreArray = JSON.parse(localStorage.scoreArray);
+} else {
+  new Score('user', 0);
+}
+
 playAgainButton.addEventListener('click', playGame);
