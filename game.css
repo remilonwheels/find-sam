@@ -24,8 +24,15 @@ div div{
 
 .background-img {
   position: absolute;;
-  width: 100%;
+  width: 290px;
+  height: 290px;
+  border: 5px solid transparent;
 }
+
+.background-img:hover {
+  border: 5px solid black;
+}
+
 
 .character-img {
   position: absolute;
@@ -49,6 +56,8 @@ aside div {
 
 #play-again-button {
   margin: 0 auto;
+  position: relative;
+  top: 50%;
 }
 
 #play-new-user-button {
