@@ -19,7 +19,7 @@ var scoreArray = retrieveLocalStorage(localStorage.scoreArray);
 var clickCount = 0;
 var round = 1;
 var positionArray = [];
-var roundsToWin = 3;
+var roundsToWin = 20;
 
 function Score (userName, score) {
   this.userName = userName;
@@ -101,21 +101,18 @@ function handleUserClick(event) {
     clickCount += 1;
     clicksInRound.textContent = round - clickCount;
 
-    event.target.parentNode.childNodes[3].style.zIndex = 5;
-
+    event.target.style.backgroundColor = 'rgba(0,255,0, .3)';
     window.setTimeout(function() {
-      event.target.parentNode.childNodes[3].style.zIndex = -1;
-    }, 300);
+      event.target.style.backgroundColor = 'transparent';
+    }, 200);
     console.log(event.target.parentNode.childNodes);
 
 
   } else {
-    event.target.parentNode.childNodes[5].style.zIndex = 5;
-
+    event.target.style.backgroundColor = 'rgba(255, 0, 0, .3)';
     window.setTimeout(function() {
-      event.target.parentNode.childNodes[5].style.zIndex = -1;
-    }, 300);
-    console.log(event.target.parentNode.childNodes);
+      event.target.style.backgroundColor = 'transparent';
+    }, 200);
     loseGame();
   }
 
