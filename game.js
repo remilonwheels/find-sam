@@ -16,6 +16,7 @@ var scoreArray = retrieveLocalStorage(localStorage.scoreArray);
 var clickCount = 0;
 var round = 1;
 var positionArray = [];
+var roundsToWin = 5;
 
 function storeLocalStorage() {
   localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
@@ -27,8 +28,8 @@ function retrieveLocalStorage(jsonArgument) {
 
 function playRound(){
   nextRoundButton.style.display = 'none';
-  roundHeader.textContent = 'Round ' + round;
-  clicksInRound.textContent = 'Click Count: ' + clickCount + ' / ' + round;
+  roundHeader.textContent = round;
+  clicksInRound.textContent = round - clickCount;
 
   var randomPosition = getRandomPosition();
   if (randomPosition === 0){
@@ -72,6 +73,8 @@ function renderPositionArray(array, showTime, hideTime){
 function handleUserClick(event) {
   event.preventDefault();
 
+  console.log(event.target);
+
   var userSelection;
 
   if (event.target.id === 'img-top-left') {
@@ -90,7 +93,7 @@ function handleUserClick(event) {
 
   if (userSelection === positionArray[clickCount].id) {
     clickCount += 1;
-    clicksInRound.textContent = 'Click Count: ' + clickCount + ' / ' + round;
+    clicksInRound.textContent = round - clickCount;
 
   } else {
     loseGame();
@@ -98,6 +101,9 @@ function handleUserClick(event) {
 
   if (clickCount === positionArray.length) {
     round += 1;
+    if (round === roundsToWin) {
+      winGame();
+    }
     console.log('round: ' + round);
     clickCount = 0;
     console.log('user win');
@@ -113,9 +119,17 @@ function loseGame() {
   gameboard.removeEventListener('click', handleUserClick);
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
-  userScore = round - 1;
 
-  //user last score object score
+  userScore = round - 1;
+  updateUserScore();
+}
+
+function winGame() {
+  userScore = round;
+  updateUserScore();
+}
+
+function updateUserScore() {
   scoreArray[scoreArray.length - 1].score = userScore;
   localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
 

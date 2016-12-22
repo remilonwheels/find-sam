@@ -1,21 +1,30 @@
 * {
-  border: 2px solid orange;
+  outline: 2px solid orange;
 }
 
 section {
-  width: 825px;
+  height: 600px;
 }
 
-div {
+section > div {
+  width: 600px;
+  float:left;
+  height: 600px;
+}
+
+div div{
   position: relative;
+  /*width: 300px;*/
+  /*height: 300px;*/
+  float: left;
   width: 300px;
   height: 300px;
-  float: left;
 }
 
 
 .background-img {
   position: relative;
+  width: 100%;
 }
 
 .character-img {
@@ -29,9 +38,25 @@ div {
 
 aside {
   text-align: center;
+  height: 100%;
+}
+
+aside div {
+  
+  height: 200px;
 }
 
 #next-round-button, #play-again-button {
   display: none;
   margin: 0 auto;
+}
+
+
+/*theme overrides*/
+main {
+  width: 65%;
+  height:  calc(100% - 65px);;
+  margin: 0 auto;
+  max-width: 960px;
+  min-width: 800px;
 }
