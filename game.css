@@ -42,12 +42,12 @@ aside {
 }
 
 aside div {
-  
+
   height: 200px;
 }
 
-#next-round-button, #play-again-button {
-  display: none;
+#play-again-button {
+  /*display: none;*/
   margin: 0 auto;
 }
 

@@ -7,16 +7,24 @@ var charImgBtmRight = document.getElementById('char-img-btm-right');
 var gameboard = document.getElementById('gameboard');
 var roundHeader = document.getElementById('round-header');
 var clicksInRound = document.getElementById('clicks-in-round');
-var nextRoundButton = document.getElementById('next-round-button');
+
 var playAgainButton = document.getElementById('play-again-button');
 var userScore;
+var winGameFlag = false;
+var firstGameFlag = true;
 
 var scoreArray = retrieveLocalStorage(localStorage.scoreArray);
 
 var clickCount = 0;
 var round = 1;
 var positionArray = [];
-var roundsToWin = 5;
+var roundsToWin = 3;
+
+function Score (userName, score) {
+  this.userName = userName;
+  this.score = score;
+  scoreArray.push(this);
+}
 
 function storeLocalStorage() {
   localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
@@ -27,7 +35,6 @@ function retrieveLocalStorage(jsonArgument) {
 }
 
 function playRound(){
-  nextRoundButton.style.display = 'none';
   roundHeader.textContent = round;
   clicksInRound.textContent = round - clickCount;
 
@@ -46,7 +53,6 @@ function playRound(){
   }
   renderPositionArray(positionArray, 300, 150);
   gameboard.addEventListener('click', handleUserClick);
-  nextRoundButton.addEventListener('click', playRound);
 }
 
 function getRandomPosition() {
@@ -90,7 +96,6 @@ function handleUserClick(event) {
     userSelection = 'char-img-btm-right';
   }
 
-
   if (userSelection === positionArray[clickCount].id) {
     clickCount += 1;
     clicksInRound.textContent = round - clickCount;
@@ -100,22 +105,23 @@ function handleUserClick(event) {
   }
 
   if (clickCount === positionArray.length) {
-    round += 1;
     if (round === roundsToWin) {
       winGame();
     }
+    round += 1;
     console.log('round: ' + round);
     clickCount = 0;
     console.log('user win');
-    nextRoundButton.style.display = 'block';
-    gameboard.removeEventListener('click', handleUserClick);
+
+    if (!winGameFlag) {
+      playRound();
+    }
   }
 
   console.log(clickCount);
 }
 
 function loseGame() {
-  nextRoundButton.removeEventListener('click', playRound);
   gameboard.removeEventListener('click', handleUserClick);
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
@@ -125,14 +131,26 @@ function loseGame() {
 }
 
 function winGame() {
+  gameboard.removeEventListener('click', handleUserClick);
+  playAgainButton.style.display = 'block';
+  playAgainButton.addEventListener('click', playGame);
+
+  winGameFlag = true;
   userScore = round;
   updateUserScore();
+
+  return;
 }
 
 function updateUserScore() {
-  scoreArray[scoreArray.length - 1].score = userScore;
-  localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
+  if (firstGameFlag) {
+    scoreArray[scoreArray.length - 1].score = userScore;
+    localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
+    firstGameFlag = false;
+  }
 
+  new Score(scoreArray[scoreArray.length - 1].userName, userScore);
+  localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
 }
 
 function playGame(){
@@ -140,13 +158,10 @@ function playGame(){
   round = 1;
   positionArray = [];
 
-  nextRoundButton.style.display = 'block';
-  nextRoundButton.addEventListener('click', playRound);
+  playRound();
 
   playAgainButton.style.display = 'none';
 }
 
 //Function Calls
 playAgainButton.addEventListener('click', playGame);
-nextRoundButton.addEventListener('click', playRound);
-playGame();
