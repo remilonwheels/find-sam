@@ -7,6 +7,7 @@ var charImgBtmRight = document.getElementById('char-img-btm-right');
 var gameboard = document.getElementById('gameboard');
 var roundHeader = document.getElementById('round-header');
 var clicksInRound = document.getElementById('clicks-in-round');
+var winLoseHeader = document.getElementById('win-lose-header');
 
 var playAgainButton = document.getElementById('play-again-button');
 var userScore;
@@ -127,6 +128,9 @@ function loseGame() {
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
 
+  //lose functionality
+  winLoseHeader.textContent = 'You Lose'
+
   userScore = round - 1;
   updateUserScore();
 }
@@ -136,10 +140,11 @@ function winGame() {
   playAgainButton.textContent = 'Play Again';
   playAgainButton.style.display = 'block';
   playAgainButton.addEventListener('click', playGame);
-
   winGameFlag = true;
   userScore = round;
   updateUserScore();
+
+  winLoseHeader.textContent = 'You Win';
 
   return;
 }
@@ -156,6 +161,7 @@ function updateUserScore() {
 }
 
 function playGame(){
+  winLoseHeader.textContent = '';
   winGameFlag = false;
   clickCount = 0;
   round = 1;
