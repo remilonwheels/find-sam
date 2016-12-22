@@ -1,6 +1,9 @@
 'use strict';
 var scoreArray = [];
 var leaderList = document.getElementById('leaderList');
+var boardKiller = document.getElementById('button');
+var redirect = function() { window.location.href = 'leaderpage.html'
+};
 // function Score (userName, score) {
 //   this.userName = userName;
 //   this.score = score ;
