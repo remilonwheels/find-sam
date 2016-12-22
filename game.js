@@ -8,14 +8,13 @@ var gameboard = document.getElementById('gameboard');
 var roundHeader = document.getElementById('round-header');
 var clicksInRound = document.getElementById('clicks-in-round');
 var winLoseHeader = document.getElementById('win-lose-header');
-
 var playAgainButton = document.getElementById('play-again-button');
 var playNewUserButton = document.getElementById('play-new-user-button');
+
 var userScore;
 var winGameFlag = false;
 var firstGameFlag = true;
 var scoreArray = [];
-
 
 var clickCount = 0;
 var round = 1;
@@ -27,11 +26,6 @@ function Score (userName, score) {
   this.score = score;
   scoreArray.push(this);
 }
-
-function storeLocalStorage() {
-  localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
-}
-
 
 function playRound(){
   roundHeader.textContent = round;
@@ -192,6 +186,22 @@ function playGame(){
 
   playRound();
   playAgainButton.style.display = 'none';
+  // gameboard.addEventListener('mouseover', attachHover);
+  // attachHover();
+}
+
+function attachHover() {
+  charImgTopLeft.addEventListener('mouseover', borderHover);
+  charImgTopRight.addEventListener('mouseover', borderHover);
+  charImgBtmLeft.addEventListener('mouseover', borderHover);
+  charImgBtmRight.addEventListener('mouseover', borderHover);
+}
+
+function borderHover(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  console.log(event.target);
+  event.target.style.border = '5px solid black';
 }
 
 //Function Calls
