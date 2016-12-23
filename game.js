@@ -6,10 +6,14 @@ var charImgBtmLeft = document.getElementById('char-img-btm-left');
 var charImgBtmRight = document.getElementById('char-img-btm-right');
 var gameboard = document.getElementById('gameboard');
 var roundHeader = document.getElementById('round-header');
+var scoreHeader = document.getElementById('score-header');
 var clicksInRound = document.getElementById('clicks-in-round');
 var winLoseHeader = document.getElementById('win-lose-header');
 var playAgainButton = document.getElementById('play-again-button');
 var playNewUserButton = document.getElementById('play-new-user-button');
+var topControl = document.getElementById('top-control');
+var midControl = document.getElementById('mid-control');
+var btmControl = document.getElementById('btm-control');
 
 var userScore;
 var winGameFlag = false;
@@ -19,7 +23,7 @@ var scoreArray = [];
 var clickCount = 0;
 var round = 1;
 var positionArray = [];
-var roundsToWin = 20;
+var roundsToWin = 15;
 
 function Score (userName, score) {
   this.userName = userName;
@@ -142,7 +146,14 @@ function loseGame() {
   });
 
   //lose functionality
+  var offElements = document.getElementsByClassName('game-over-off');
+  for (var i = 0; i < offElements.length; i++) {
+    offElements[i].style.display = 'none';
+  }
   winLoseHeader.textContent = 'You Lose';
+  scoreHeader.textContent = 'Score: ' + (round - 1);
+  gameboard.style.backgroundColor = 'rgba(255, 0, 0, .3)';
+
 
   userScore = round - 1;
   updateUserScore();
@@ -161,7 +172,13 @@ function winGame() {
   userScore = round;
   updateUserScore();
 
+  var offElements = document.getElementsByClassName('game-over-off');
+  for (var i = 0; i < offElements.length; i++) {
+    offElements[i].style.display = 'none';
+  }
   winLoseHeader.textContent = 'You Win';
+  scoreHeader.textContent = 'Score: ' + (round);
+  gameboard.style.backgroundColor = 'rgba(0, 255, 0, .3)';
 
   return;
 }
@@ -178,7 +195,13 @@ function updateUserScore() {
 }
 
 function playGame(){
+  var onElements = document.getElementsByClassName('game-over-off');
+  for (var i = 0; i < onElements.length; i++) {
+    onElements[i].style.display = 'block';
+  }
+  gameboard.style.backgroundColor = 'transparent';
   winLoseHeader.textContent = '';
+  scoreHeader.textContent = '';
   winGameFlag = false;
   clickCount = 0;
   round = 1;
@@ -186,6 +209,7 @@ function playGame(){
 
   playRound();
   playAgainButton.style.display = 'none';
+  playNewUserButton.style.display = 'none';
   // gameboard.addEventListener('mouseover', attachHover);
   // attachHover();
 }
@@ -204,9 +228,20 @@ function borderHover(event) {
   event.target.style.border = '5px solid black';
 }
 
+function hideElement(element) {
+  element.style.display = 'none';
+}
+
+function showElement(element) {
+  element.style.display = 'block';
+}
+
 //Function Calls
 if (localStorage.scoreArray) {
   scoreArray = JSON.parse(localStorage.scoreArray);
+  if (scoreArray[scoreArray.length - 1].userName === 'win') {
+    roundsToWin = 2;
+  }
 } else {
   new Score('user', 0);
 }

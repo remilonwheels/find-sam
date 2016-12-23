@@ -10,6 +10,7 @@ section > div {
   width: 600px;
   float:left;
   height: 600px;
+  border: 5px solid gray;
 }
 
 div div{
@@ -22,8 +23,10 @@ div div{
 }
 
 
+
+
 .background-img {
-  position: absolute;;
+  position: absolute;
   width: 290px;
   height: 290px;
   border: 5px solid transparent;
@@ -36,10 +39,10 @@ div div{
 
 .character-img {
   position: absolute;
-  top: 25%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
   display: none;
 
 }
@@ -47,11 +50,16 @@ div div{
 aside {
   text-align: center;
   height: 100%;
+  border: 5px solid gray;
 }
 
 aside div {
-
   height: 200px;
+}
+
+aside div h2 {
+  position: relative;
+  top: 60px;
 }
 
 #play-again-button {
@@ -85,12 +93,17 @@ aside div {
   z-index: -1;
 }
 
+#game-section{
+  position: relative;
+  top: 20px;
+}
+
 
 /*theme overrides*/
-main {
+/*main {
   width: 65%;
   height:  calc(100% - 65px);
   margin: 0 auto;
   max-width: 960px;
   min-width: 800px;
-}
+}*/
