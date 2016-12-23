@@ -3,8 +3,29 @@
   line-height: 200%;
   padding: 20px;
   margin: 150px auto;
+  margin: 0 auto;
 }
 .Signup {
   position: absolute;
-  margin: 20px 200px;
+  margin: 0 auto;
+}
+
+section {
+  width: 100%;
+}
+
+section section {
+  width: 100%;
+}
+
+p {
+  letter-spacing: 2px;
+  line-height: 200%;
+  width: 100%;
+}
+
+form {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
 }
