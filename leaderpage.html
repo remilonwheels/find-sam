@@ -12,29 +12,28 @@
     <h1>Find Sam</h1>
     <nav>
       <ul>
-        <li><a href="game.html">Play</a></li>
-        <li><a href="leaderpage.html">Leaderboard</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="leaderpage.html">Leaderboard</a></li>
+        <li><a href="index.html">Play</a></li>
       </ul>
     </nav>
   </header>
-   <main>
 
-     <h2 id = leaderTitle> Legends </h2> <br>
-  <ol id = "leaderList">
-  </ol> <br>
-  <div style="text-align:center;">
-  <button id="button" type= "submit" onclick= "localStorage.clear(); redirect()";> Clear Leaderboard </button>
-</div>
-  <br>
-  <br>
+    <main>
+      <div class="main-container">
+        <h2 id = leaderTitle> Legends </h2> /<br>
+        <ol id = "leaderList"></ol> <br>
+        <div style="text-align:center;">
+        <button id="button" type= "submit" onclick= "localStorage.clear(); redirect()";> Clear Leaderboard </button>
+        </div>
+        <br>
+        <br>
+        <section>
+          <h3 id="thankYou"> Thank you for playing <br> (even if you didn't win). </h3>
+        </section>
+      </div>
+    </main>
 
-
-  <section>
-    <h3 id="thankYou"> Thank you for playing <br> (even if you didn't win). </h3>
-    </section>
-</main>
 
 
 <script type="text/javascript" src="leaderpage.js">
