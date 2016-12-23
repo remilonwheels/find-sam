@@ -21,54 +21,51 @@
         </ul>
       </nav>
     </header>
+    <!-- <div class="main-container"> -->
     <main>
-      <section>
+      <section id="game-section">
         <div id="gameboard">
           <div id="top-left">
             <img id="img-top-left" class="background-img show-border" src="assets/cats.png" />
-            <div class="click-correct-div"></div>
-            <div class="click-wrong-div"></div>
             <img id="char-img-top-left" class="character-img" src="assets/sam-transparent.png" />
           </div>
           <div id="top-right">
             <img id="img-top-right" class="background-img" src="assets/classroom.png" />
-            <div class="click-correct-div"></div>
-            <div class="click-wrong-div"></div>
             <img id="char-img-top-right" class="character-img" src="assets/sam-transparent.png" />
           </div>
           <div id="bottom-left">
             <img id="img-btm-left" class="background-img" src="assets/classroom.png" />
-            <div class="click-correct-div"></div>
-            <div class="click-wrong-div"></div>
             <img id="char-img-btm-left" class="character-img" src="assets/sam-transparent.png" />
           </div>
           <div id="bottom-right">
             <img id="img-btm-right" class="background-img" src="assets/classroom.png" />
-            <div class="click-correct-div"></div>
-            <div class="click-wrong-div"></div>
             <img id="char-img-btm-right"class="character-img" src="assets/sam-transparent.png" />
           </div>
         </div>
         <aside>
-          <div>
+          <div id="top-control" class="control">
+
             <h2>Round</h2>
             <h2 id="round-header">1</h2>
             <h2 id="win-lose-header"><h2>
+
           </div>
-          <div>
+          <div id="mid-control" class="control">
+
             <h2>Remaining Moves</h2>
             <h2 id="clicks-in-round">1</h2>
+
           </div>
-          <div>
+          <div id="btm-control" class="control">
+
             <button id="play-again-button">Play</button>
             <button id="play-new-user-button">New Player</button>
+
           </div>
-
-
         </aside>
       </section>
-
     </main>
+    <!-- </div> -->
 
     <script src="game.js"></script>
   </body>
