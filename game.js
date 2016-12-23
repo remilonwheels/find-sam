@@ -239,6 +239,9 @@ function showElement(element) {
 //Function Calls
 if (localStorage.scoreArray) {
   scoreArray = JSON.parse(localStorage.scoreArray);
+  if (scoreArray[scoreArray.length - 1].userName === 'win') {
+    roundsToWin = 2;
+  }
 } else {
   new Score('user', 0);
 }
