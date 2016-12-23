@@ -10,6 +10,9 @@ var clicksInRound = document.getElementById('clicks-in-round');
 var winLoseHeader = document.getElementById('win-lose-header');
 var playAgainButton = document.getElementById('play-again-button');
 var playNewUserButton = document.getElementById('play-new-user-button');
+var topControl = document.getElementById('top-control');
+var midControl = document.getElementById('mid-control');
+var btmControl = document.getElementById('btm-control');
 
 var userScore;
 var winGameFlag = false;
@@ -142,7 +145,13 @@ function loseGame() {
   });
 
   //lose functionality
+  var offElements = document.getElementsByClassName('game-over-off');
+  for (var i = 0; i < offElements.length; i++) {
+    offElements[i].style.display = 'none';
+  }
   winLoseHeader.textContent = 'You Lose';
+  gameboard.style.backgroundColor = 'rgba(255, 0, 0, .3)';
+
 
   userScore = round - 1;
   updateUserScore();
@@ -178,6 +187,11 @@ function updateUserScore() {
 }
 
 function playGame(){
+  var onElements = document.getElementsByClassName('game-over-off');
+  for (var i = 0; i < onElements.length; i++) {
+    onElements[i].style.display = 'block';
+  }
+  gameboard.style.backgroundColor = 'transparent';
   winLoseHeader.textContent = '';
   winGameFlag = false;
   clickCount = 0;
@@ -186,6 +200,7 @@ function playGame(){
 
   playRound();
   playAgainButton.style.display = 'none';
+  playNewUserButton.style.display = 'none';
   // gameboard.addEventListener('mouseover', attachHover);
   // attachHover();
 }
@@ -202,6 +217,14 @@ function borderHover(event) {
   event.stopPropagation();
   console.log(event.target);
   event.target.style.border = '5px solid black';
+}
+
+function hideElement(element) {
+  element.style.display = 'none';
+}
+
+function showElement(element) {
+  element.style.display = 'block';
 }
 
 //Function Calls
