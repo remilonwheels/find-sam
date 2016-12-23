@@ -23,7 +23,7 @@ var scoreArray = [];
 var clickCount = 0;
 var round = 1;
 var positionArray = [];
-var roundsToWin = 4;
+var roundsToWin = 15;
 
 function Score (userName, score) {
   this.userName = userName;
