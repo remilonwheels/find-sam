@@ -23,6 +23,8 @@ div div{
 }
 
 
+
+
 .background-img {
   position: absolute;
   width: 290px;
@@ -53,6 +55,11 @@ aside {
 
 aside div {
   height: 200px;
+}
+
+aside div h2 {
+  position: relative;
+  top: 60px;
 }
 
 #play-again-button {
